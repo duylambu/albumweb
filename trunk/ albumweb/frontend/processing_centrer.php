@@ -1,0 +1,42 @@
+<?php
+if($_GET['param']=="index")
+    {
+        include_once("include/register.php");
+        return;
+    }
+    if($_GET['param']=="test")
+    {
+        include_once("include/test.php");
+        return;
+    }
+    if($_GET['param']=="log_in")
+    {
+        include_once("include/login/login.php");
+        return;
+    }
+    if($_GET['param']=="admin")
+    {
+        include_once("include/feature/helloadmin.php");
+        return;
+    }
+    if($_GET['param']=="logout")
+    {
+        include_once("include/logout/logout.php");
+        return;
+    }
+    if($_GET['param']=="department")
+    {
+        include_once("include/department/department.php");
+        return;
+    }
+    if($_GET['param']=="country")
+    {
+        include_once("include/country/country.php");
+        return;
+    }
+    else
+    {
+        include_once("include/register/register.php");
+        return;
+    }
+?>
