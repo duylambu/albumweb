@@ -1,4 +1,10 @@
+
 <?php
+if($_GET['param']=="album")
+    {
+        include_once("album/list_public_albums.php");
+        return;
+    }
 if($_GET['param']=="index")
     {
         include_once("include/register.php");
@@ -11,32 +17,32 @@ if($_GET['param']=="index")
     }
     if($_GET['param']=="log_in")
     {
-        include_once("include/login/login.php");
+        include_once("login/login.php");
         return;
     }
     if($_GET['param']=="admin")
     {
-        include_once("include/feature/helloadmin.php");
+        include_once("feature/helloadmin.php");
         return;
     }
     if($_GET['param']=="logout")
     {
-        include_once("include/logout/logout.php");
+        include_once("logout/logout.php");
         return;
     }
     if($_GET['param']=="department")
     {
-        include_once("include/department/department.php");
+        include_once("department/department.php");
         return;
     }
     if($_GET['param']=="country")
     {
-        include_once("include/country/country.php");
+        include_once("country/country.php");
         return;
     }
     else
     {
-        include_once("include/register/register.php");
+        include_once("register/register.php");
         return;
     }
 ?>

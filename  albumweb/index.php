@@ -28,13 +28,12 @@
     </div>
     <div id="main-container">
          <?php
-         include_once("frontend/processing_center.php"); 
+         include_once("frontend/processing_centrer.php"); 
          ?>                                       
     </div>
     <div id="right-container">
         <?php        
-        include_once("frontend/processing_right.php");        
-        //include_once("frontend/sidebar-right/ad-bottom-right.php");        
+        include_once("frontend/processing_right.php");               
          ?>
         <div id="search-bar">
         <?php
