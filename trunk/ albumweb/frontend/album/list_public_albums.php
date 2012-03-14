@@ -1,6 +1,7 @@
 <?php
 include_once('dbconnect.php');
 ?>
+<h2>PUBLIC ALBUMS</h2>
 <?php
 $query='select * from album where public>0';
 $result=mysql_query($query);
