@@ -42,7 +42,8 @@ if($_GET['param']=="index")
     }
     else
     {
-        include_once("register/register.php");
+        include_once("user/list_users.php");
+        include_once("album/list_public_albums.php");
         return;
     }
 ?>
