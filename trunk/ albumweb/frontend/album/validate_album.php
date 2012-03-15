@@ -1,5 +1,5 @@
 <?php
-include_once('../../../dbconnect.php'); 
+include_once('../../dbconnect.php'); 
 ?>
 <?php
  $albumname=$_POST['albumname'];
