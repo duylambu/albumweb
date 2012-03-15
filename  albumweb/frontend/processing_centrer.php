@@ -5,15 +5,16 @@ if($_GET['param']=="album")
         include_once("album/list_public_albums.php");
         return;
     }
-if($_GET['param']=="index")
+    if($_GET['param']=="edit_album")
     {
-        include_once("include/register.php");
+        include_once("album/edit_album.php");
         return;
     }
-    if($_GET['param']=="test")
+    if($_GET['param']=="index")
     {
-        include_once("include/test.php");
-        return;
+        include_once("frontend/user/list_users.php");
+        include_once("frontend/album/list_public_albums.php");
+        exit();
     }
     if($_GET['param']=="log_in")
     {
@@ -22,17 +23,17 @@ if($_GET['param']=="index")
     }
     if($_GET['param']=="admin")
     {
-        include_once("feature/helloadmin.php");
+        include_once("frontend/user/helloadmin.php");
         return;
     }
     if($_GET['param']=="logout")
     {
-        include_once("logout/logout.php");
+        include_once("frontend/logout/logout.php");
         return;
     }
-    if($_GET['param']=="department")
+    if($_GET['param']=="register")
     {
-        include_once("department/department.php");
+        include_once("register/register.php");
         return;
     }
     if($_GET['param']=="country")
@@ -40,10 +41,25 @@ if($_GET['param']=="index")
         include_once("country/country.php");
         return;
     }
+    if($_GET['param']=="myalbums")
+    {
+        include_once("user/myalbums.php");
+        return;
+    }
+    if($_GET['param']=="detail_album")
+    {
+        include_once("album/detail_album.php");
+        return;
+    }
+    if($_GET['param']=="test")
+    {
+        include_once("test.php");
+        return;
+    }
     else
     {
-        include_once("user/list_users.php");
-        include_once("album/list_public_albums.php");
-        return;
+        include_once("frontend/user/list_users.php");
+        include_once("frontend/album/list_public_albums.php");
+        exit();
     }
 ?>
