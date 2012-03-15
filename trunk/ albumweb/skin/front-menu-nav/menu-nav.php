@@ -1,12 +1,22 @@
 ﻿<ul>
-			<li><a href="index.php" id="current">Home</a></li>
-			<li><a href="#" >My Albums</a>
-            </li>
-			<li><a href="#">Register</a>               
-            </li>
-			<li><a href="#">Login</a>                   
-            </li>
-			<li><a href="#">Logout</a>           
+			<li><a href="?param=index" id="current">Home</a></li>
+            <?php
+            if($_SESSION['user']!=null || isset($_SESSION['user']))
+            {?>
+              <li><a href="?param=myalbums" >My Albums</a>
+            </li>  
+            <?php
+            }?>	
+			
+            <?php
+            if($_SESSION['user']==null || !isset($_SESSION['user']))
+            {?>
+               <li><a href="?param=register">Register</a></li>
+			<li><a href="?param=log_in">Login</a></li>  
+            <?php
+            }?>			                  
+            
+			<li><a href="?param=logout">Logout</a>           
             </li>		        
            	<li><a href="#">View User</a>           
             </li>           
