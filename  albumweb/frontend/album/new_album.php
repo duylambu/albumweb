@@ -40,7 +40,7 @@ $upload="../../upload/";
     if(isset($_FILES["file"]))
     {
         
-        $albumfolder=$upload.$user.'/'.$albumid.'/';
+        $albumfolder=$upload.$user.'/'.$albumid.'/avatar/';
         echo $albumfolder;
         if(mkdir($albumfolder,0,true))
         {

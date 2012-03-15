@@ -1,7 +1,13 @@
+<style>
+img#avatar-user{
+    width:100px;
+    height: 100px;
+}
+</style>
 <div>
 <form>
-<div>WELCOME:(^^)</div>
-<div><img src="abc.jpg" id="avatar" name="avarta" /></div>
+<div>WELCOME:<?php echo $_SESSION['user']['username'];?></div>
+<div><img id="avatar-user" src="upload/<?php echo $_SESSION['user']['id'];?>/avatar/<?php  echo $_SESSION['user']['avatar'];?>" id="avatar" name="avarta" /></div>
 <div id="info-container">
 </div>
 </form>

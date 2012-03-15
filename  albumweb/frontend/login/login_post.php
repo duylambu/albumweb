@@ -33,7 +33,9 @@ if($username!=null && $username!="" && $password!=null && $password!="")
         $tempUser=array('username'=>$user['user_name'],
         'fullname'=>$user['full_name'],
         'email'=>$user['email'],
-        'id'=>$user['user_id']);
+        'id'=>$user['user_id'],
+        'avatar'=>$user['avatar']);
+        
         $_SESSION['user']=$tempUser;
         $rs=array('value'=>1,'temp'=>$_POST['remember_me']);
         echo json_encode($rs);

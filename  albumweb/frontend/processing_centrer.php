@@ -14,7 +14,8 @@ if($_GET['param']=="album")
     {
         include_once("frontend/user/list_users.php");
         include_once("frontend/album/list_public_albums.php");
-        exit();
+        return;
+        //exit();
     }
     if($_GET['param']=="log_in")
     {
@@ -60,6 +61,6 @@ if($_GET['param']=="album")
     {
         include_once("frontend/user/list_users.php");
         include_once("frontend/album/list_public_albums.php");
-        exit();
+        //exit();
     }
 ?>
