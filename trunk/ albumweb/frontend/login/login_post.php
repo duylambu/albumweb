@@ -17,7 +17,7 @@ if($username!=null && $username!="" && $password!=null && $password!="")
     $count=mysql_num_rows($result);
     if($count<=0)
     {
-        $rs=array('value'=>0,'temp'=>'User is not existed!');
+        $rs=array('value'=>0,'temp'=>'Log in Fail!');
         echo json_encode($rs);
         die;
     }

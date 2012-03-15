@@ -36,8 +36,8 @@ if($user!=""&&$email!=""&&$password!=""&&$fullname!="")
             $query="insert into user
             (user_name,email,password,full_name,phone,join_date) 
             values('".$user."','".$email."','".md5($password)."','".$fullname."','".$_POST['phone']."',NOW())";
-            $result=mysql_query("Register Successfully!");
-            $message=$query;
+            $result=mysql_query($query);
+            $message="Register Successfully!";
             $flag=1;                    
         }
     }

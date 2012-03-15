@@ -106,13 +106,43 @@ while($row=mysql_fetch_array($result))
 ?>
 <div>Creat New Album</div>
 <div>
-<form id="new_album_form" action="frontend/functions/album/create_new_album.php" method="post" enctype="multipart/form-data">
+<form id="new_album_form" action="frontend/album/create_new_album.php" method="post" enctype="multipart/form-data">
 <table>
 <tr>
 <td>Album name:</td><td id="td_create"><input type="text" id="album_name" name="album_name" /><span id="mess_success"></span></td>
 <tr><td>Avatar:</td><td><input type="file" name="file" id="file" /></td></tr>
+<tr><td><input type="hidden" name="id" value="<?php $id;?>" /></td></tr>
 <tr><td><input type="submit" id="create_album" name="create_album" value="Create" /></td></tr>
 </tr>
 </table>
 </form>
+</div>
+
+<h1>TEST</h1>
+<script type="text/javascript">
+    $(document).ready(function() 
+    { 
+        $('#createalbum').click(function()	
+        {
+            $("#preview").html('');
+            $("#preview").html('<img src="loader.gif" alt="Uploading...."/>');
+            $("#newalbum").ajaxForm(
+            {
+            target: '#preview'
+            }).submit();
+        });
+    }); 
+</script>
+    
+ <?php
+session_start();
+?>
+
+<form id="newalbum" method="post" enctype="multipart/form-data" action='frontend/album/new_album.php'>
+<input type="text" id="album_name" name="album_name" />
+Upload image <input type="file" name="file" id="file" />
+<input type="hidden" name="uid" id="uid" value="<?php echo $id;?>" />
+<input type="button" name="createalbum" id="createalbum" value="Create"/>
+</form>
+<div id='preview'>
 </div>

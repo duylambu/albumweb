@@ -195,7 +195,7 @@ $(document).ready(function(){
                 $('#susscessRegister').html(getData.successmessage);
                 if(getData.value>0)
                 {
-                    alert(getData.successmessage);
+                    //alert(getData.successmessage);
                     $('.content_register :input').val('');
                     //window.location="?param=log_in"; 
                     //isRedirect=true;                  
