@@ -1,42 +1,43 @@
-<?php include_once('../../config/connectDB.php');?>
-
+<?php 
+include_once('../../dbconnect.php');
+?>
 <?php
 session_start();
-if(isset($_COOKIE['rememberme']))
-{
-    unset($_COOKIE['rememberme']);
-}
+
 $username=$_POST['username'];
 $password=$_POST['password'];
 $remem=$_POST['remember_me'];
+
+
 if($username!=null && $username!="" && $password!=null && $password!="")
 {
-        $password=md5($password);
-    $query="select * from users where user_name='$username' and password='$password'";
+    $password=md5($password);
+    $query="select * from user where user_name='$username' and password='$password'";
     $result=mysql_query($query);
+    $count=mysql_num_rows($result);
+    if($count<=0)
+    {
+        $rs=array('value'=>0,'temp'=>'User is not existed!');
+        echo json_encode($rs);
+        die;
+    }
+    
     while($t=mysql_fetch_array($result))
     {
         $user=$t;
         break;
     }
+    
     if($user['user_name']==$username && $user['password']==$password)
     {        
         $tempUser=array('username'=>$user['user_name'],
-        'fullname'=>$user['fullname'],
-        'email'=>$user['email']);
+        'fullname'=>$user['full_name'],
+        'email'=>$user['email'],
+        'id'=>$user['user_id']);
         $_SESSION['user']=$tempUser;
         $rs=array('value'=>1,'temp'=>$_POST['remember_me']);
-         
-        //$tem=array('key'=>'username:'.$user['user_name'].'email:'.$user['email']);
-        //echo json_encode($tem);
-        //die;
-        if($remem!=null&&$remem=='true')
-        {
-            $remember=array('username'=>$username,'password'=>$password);
-            setcookie('rememberme',$remember,time()+24*60*60*60);
-        }
-       echo json_encode($rs);
-       die;
+        echo json_encode($rs);
+        die;
     }
     else
     {
