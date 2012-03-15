@@ -129,20 +129,7 @@ $(document).ready(function(){
     else{
         $('#fullname').removeClass('error'); 
     }
-    //end check full name
-    
-    //check birthday
-    var mess=checkBirthday();
-    if(mess!='0'&&mess!=""){
-         isSuccess=false;
-        $('#yyyybirthday').addClass('error'); 
-        $('#yyyybirthday').parent(this).append('<label class="lberror" id="lbyybirthday">'+mess+'</label>');
-       
-    }
-    else{
-        $('#yyyybirthday').removeClass('error'); 
-    }
-    //end check birthday
+    //end check full name        
     
     //check phone number
     var codemess=checkCountryCode();
@@ -193,30 +180,25 @@ $(document).ready(function(){
         var email=document.getElementById('email').value;
         var password=document.getElementById('password').value;
         var fullname=document.getElementById('fullname').value;
-        var dd=document.getElementById('ddbirthday').value;
-        var mm=document.getElementById('mmbirthday').value;
-        var yy=document.getElementById('yyyybirthday').value;
-        var birthday=yy+'-'+mm+'-'+dd;
         var countrycode=document.getElementById('country_code').value;
         var areacode=document.getElementById('area_code').value;
         var number=document.getElementById('phone_number').value;
-        var phonenumber=countrycode+'.'+areacode+'.'+number;
-        var country=document.getElementById('country').value;
-        var department=document.getElementById('department').value;
+        var phonenumber=countrycode+'.'+areacode+'.'+number;               
         
             $.ajax({
-            url: 'include/register/register_post.php',
+            url: 'frontend/register/register_post.php',
             type: 'POST',
             cache: false,
-            data: {'username':username,'email':email,'password':password,'fullname':fullname,'birthday':birthday,'phone':phonenumber,'country':country,'department':department},
+            data: {'username':username,'email':email,'password':password,'fullname':fullname,'phone':phonenumber},
             success: function(string){
                 var getData = $.parseJSON(string);                                  
                 $('#susscessRegister').html(getData.successmessage);
                 if(getData.value>0)
                 {
+                    alert(getData.successmessage);
                     $('.content_register :input').val('');
-                    window.location="?param=log_in"; 
-                    isRedirect=true;                  
+                    //window.location="?param=log_in"; 
+                    //isRedirect=true;                  
                 }                
                 sleep(2);
                // return;                
@@ -239,7 +221,7 @@ $(document).ready(function(){
     }     
         $('#checkuser').html('Checking...');
         $.ajax({
-            url: 'functions/validate_user.php',
+            url: 'frontend/register/validate_user.php',
             type: 'POST',
             cache: false,
             data: {'type':1,'content':$('#username').val()},
@@ -297,74 +279,13 @@ div#register
         <tr class="content_register">
             <td>Full name <span class="required">(*)</span>:</td>
             <td><input type="text" name="fullname" id="fullname" value="" /></td>
-        </tr>
-        <tr>
-            <td>Birthday:</td><td>
-            <span>dd:<select name="ddbirthday" id="ddbirthday">
-            <?php
-            for($i=1;$i<=31;$i++)
-            {
-                echo '<option value="'.$i.'">'.$i.'</option>';
-            } 
-            ?>
-            </select>
-            </span>
-            <span>mm:<select name="mmbirthday" id="mmbirthday">
-            <?php
-            for($i=1;$i<=12;$i++)
-            {
-                echo '<option value="'.$i.'">'.$i.'</option>';
-            } 
-            ?>
-            </select>
-            </span>
-            <span>yyyy:<select name="yyyybirthday" id="yyyybirthday">
-            <?php
-            for($i=1900;$i<=2010;$i++)
-            {
-                echo '<option value="'.$i.'">'.$i.'</option>';
-            } 
-            ?>
-            </select> 
-            </span>           
-            </td>        
-        </tr>
+        </tr>       
         <tr id="phone" class="content_register">
             <td>Phone:</td><td>
             <input maxlength="3" class="code" type="text" name="country_code" id="country_code" value="" />
             <input type="text" class="code" name="area_code" maxlength="3" id="area_code" value="" />
             <input type="text" class="number" name="phone_number" id="phone_number" value="" maxlength="7" /></td>
-        </tr>
-        <tr>
-            <td>Country:</td>
-            <td>
-            <select name="country" id="country">
-            <?php
-            $query='select * from countries';
-            $result=mysql_query($query);
-            while($country=mysql_fetch_array($result))
-            {
-                echo '<option value="'.$country['country_id'].'">'.$country['country_name'].'</option>';
-            }             
-            ?>
-            </select> 
-            </td>
-        </tr>
-        <tr>
-            <td>Department:</td>
-            <td>
-            <select name="department" id="department" >
-            <?php
-            $query='select * from departments';
-            $result=mysql_query($query);
-            while($department=mysql_fetch_array($result))
-            {
-                echo '<option value="'.$department['department_id'].'">'.$department['department_name'].'</option>';
-            }             
-            ?>
-            </select> 
-            </td>
-        </tr>
+        </tr>        
         <tr><td><input type="button" name="submit_register" id="submit_register" value="Submit" /></td><td><input type="button" name="btcancel" id="btcancel" value="Cancel" /></td></tr>
     </table>
 </form>
