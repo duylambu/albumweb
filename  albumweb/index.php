@@ -2,7 +2,7 @@
 	session_start();  
 	ob_start();
 	ini_set('display_errors', 0);
-	include("connectDB.php");
+	include("function.php");
 	include("frontend/function/function.php");
 	include("frontend/title_meta/title_meta.php");
 ?>
@@ -14,6 +14,7 @@
 	<link rel="stylesheet" href="skin/front-menu-nav/menu_style.css" type="text/css" />
     <link rel="stylesheet" href="skin/front-end-style.css" type="text/css" />
     <script src="js/jquery.js"></script>
+    <script src="js/jquery.form.js"></script>
 </head>
 <body>	
 <div id="wrapper">
@@ -28,7 +29,7 @@
     </div>
     <div id="main-container">
          <?php
-         include_once("frontend/processing_centrer.php"); 
+         include_once("frontend/processing_centrer.php");         
          ?>                                       
     </div>
     <div id="right-container">
