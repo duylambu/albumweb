@@ -88,15 +88,16 @@ $(document).ready(function(){
             return;
         }
         var remember=document.getElementById('remember_me');
+        //alert(username+password+remember.checked);
         //if(remember.value=type)
         $.ajax({
-            url: 'include/login/login_post.php',
+            url: 'frontend/login/login_post.php',
             type: 'POST',
             cache: false,
             data: {'username':username,'password':password,'remember_me':remember.checked},
             success: function(string){
                 var getData = $.parseJSON(string);
-               $('#errorlogin').html(getData.key+'temp:'+getData.temp);
+               $('#errorlogin').html(getData.value+'temp:'+getData.temp);
                 if(getData.value>0)
                 {                    
                    window.location='?param=admin';    
