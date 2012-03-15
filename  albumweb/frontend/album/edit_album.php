@@ -52,7 +52,6 @@ while($row=mysql_fetch_array($result))
 </script>
     
  <?php
-include('db.php');
 session_start();
 $session_id='1'; // User login session value
 ?>

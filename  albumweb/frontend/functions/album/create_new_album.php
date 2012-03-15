@@ -5,7 +5,7 @@ include_once('../../../function.php');
 <?php
 $upload="../../../upload/";
  $albumname=$_POST['album_name'];
- $user=1;
+ $user=$_POST['id'];
  //$avatar=$_POST['file'];
  
  if(isset($albumname)&&isset($user))
