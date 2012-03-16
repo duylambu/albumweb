@@ -46,15 +46,20 @@ if($_GET['param']=="album")
     {
         include_once("user/myalbums.php");
         return;
+    }    
+    if($_GET['param']=="view_album")
+    {
+        include_once("album/view_album.php");
+        return;
     }
     if($_GET['param']=="detail_album")
     {
         include_once("album/detail_album.php");
         return;
     }
-    if($_GET['param']=="test")
+    if($_GET['param']=="user_info")
     {
-        include_once("test.php");
+        include_once("user/profile.php");
         return;
     }
     else

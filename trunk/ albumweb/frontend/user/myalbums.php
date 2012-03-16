@@ -25,12 +25,12 @@ div#list-albums{
     width:100%;
     float:left;
 }
-div#album-item{
+div.album-item{
     width:150px;
     height:150px;
     float:left;
 }
-img#avatar{
+img.avatar{
     width:100px;
     height:100px;   
      
@@ -43,8 +43,8 @@ $query="select * from album where owner=$id";
 $result=mysql_query($query);
 while($row=mysql_fetch_array($result))
 {?>
-    <div id="album-item">
-    <div><a><img id="avatar" src="<?php //echo $row['avatar'];?>" /></a></div>
+    <div class="album-item">
+    <div><a><img class="avatar" src="upload/<?php echo $id;?>/<?php echo $row['album_id'];?>/avatar/<?php echo $row['avatar'];?>" /></a></div>
     <div><a><?php echo $row['album_name'];?></a></div>
     <div><a href="?param=edit_album&id=<?php echo $row['album_id'];?>">Edit</a> | <a href="?param=detail_album&id=<?php echo $row['album_id'];?>">View</a></div>
     </div>
@@ -69,7 +69,11 @@ while($row=mysql_fetch_array($result))
             $("#preview").html('<img src="loader.gif" alt="Uploading...."/>');
             $("#newalbum").ajaxForm(
             {
-            target: '#preview'
+            //target: '#preview'
+            success:function(string){
+              $('#list-albums').append(string); 
+              $("#preview").html(''); 
+            }
             }).submit();
         });
         $('#album_name').focusout(function(){
@@ -107,14 +111,17 @@ while($row=mysql_fetch_array($result))
  <?php
 session_start();
 ?>
-
+<div id='preview'>
+</div>
 <form id="newalbum" method="post" enctype="multipart/form-data" action='frontend/album/new_album.php'>
 <table>
 <tr><td>Album name:</td><td><input type="text" id="album_name" name="album_name" /><span id="mess_success"></span></td></tr>
+<tr><td>Share?</td><td><select name="share">
+<option value="0">Private</option>
+<option value="1">Public</option>
+</select></td></tr>
 <tr><td>Avatar:</td><td><input type="file" name="file" id="file" /></td></tr>
 <input type="hidden" name="uid" id="uid" value="<?php echo $id;?>" />
 <tr><td><input type="button" name="createalbum" id="createalbum" value="Create"/></td></tr>
 </table>
 </form>
-<div id='preview'>
-</div>

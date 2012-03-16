@@ -26,8 +26,8 @@ $result=mysql_query($query);
 while($row=mysql_fetch_array($result))
 {?>
     <div id="user-item">
-   <div><a><img id="image" src="upload/<?php echo $row['user_id']?>/<?php echo $row['avatar'];?>" /></a></div>
-   <div><a href="#"><?php echo $row['user_name']; ?></a></div>
+   <div><a href="?param=user_info&id=<?php echo $row['user_id']; ?>"><img id="image" src="upload/<?php echo $row['user_id']?>/avatar/<?php echo $row['avatar'];?>" /></a></div>
+   <div><a href="?param=user_info&id=<?php echo $row['user_id']; ?>"><?php echo $row['user_name']; ?></a></div>
    </div>
 <?php
 }
