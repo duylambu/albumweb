@@ -7,6 +7,12 @@ $upload="../../upload/";
  $albumname=$_POST['album_name'];
  $user=$_POST['uid'];
  $avatar=$_FILES["file"]["name"];
+ $public=$_POST['share'];
+ if($public<=0)
+ {
+    $public=0;
+ }
+ else $public=1;
  
  if(isset($albumname)&&isset($user))
  {
@@ -24,7 +30,7 @@ $upload="../../upload/";
         die;
     }
     $albumid=0;
-    $query="insert into album (album_name,owner,date_created,date_modified,avatar) values ('$albumname',$user,NOW(),NOW(),'$avatar')";
+    $query="insert into album (album_name,owner,date_created,date_modified,avatar,public) values ('$albumname',$user,NOW(),NOW(),'$avatar',$public)";
     $result=mysql_query($query);
     $mess="success!";
     $value=1;
@@ -41,16 +47,11 @@ $upload="../../upload/";
     {
         
         $albumfolder=$upload.$user.'/'.$albumid.'/avatar/';
-        echo $albumfolder;
-        if(mkdir($albumfolder,0,true))
+        if(!is_dir($uploadfolder))
         {
-            echo "thanhcong!";
-        }   
-        else
-        {
-            echo "thatbai";
-        } 
-        
+            mkdir($albumfolder,0,true);
+        }        
+        sleep(1);
        if (($_FILES["file"]["type"] == "image/gif")
         || ($_FILES["file"]["type"] == "image/jpeg")
         || ($_FILES["file"]["type"] == "image/jpeg")
@@ -75,7 +76,12 @@ $upload="../../upload/";
         else
           {
           move_uploaded_file($_FILES["file"]["tmp_name"],$albumfolder. $_FILES["file"]["name"]);
-          echo "$albumfolder" . $_FILES["file"]["name"];
+          //echo $albumfolder.$_FILES["file"]["name"];
+          echo "<div class='album-item'>
+          <div><a><img class='avatar' src='upload/$user/$albumid/avatar/$avatar'/></a></div>
+          <div><a>$albumname</a></div>
+          <div><a href='?param=edit_album&id=$albumid'>Edit</a> | <a href='?param=view_album&id=$albumid'></a></div>
+          </div>";
           }
         }
       }
@@ -90,6 +96,6 @@ $upload="../../upload/";
  else
  {
     
-    echo json_encode('Invalid');
+    echo 'Invalid';
  }
 ?>
