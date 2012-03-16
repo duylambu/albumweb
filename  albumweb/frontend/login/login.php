@@ -97,7 +97,7 @@ $(document).ready(function(){
             data: {'username':username,'password':password,'remember_me':remember.checked},
             success: function(string){
                 var getData = $.parseJSON(string);
-               $('#errorlogin').html(getData.value+'temp:'+getData.temp);
+               $('#errorlogin').html(getData.temp);
                 if(getData.value>0)
                 {                    
                    window.location='?param=admin';    

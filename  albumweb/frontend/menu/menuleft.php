@@ -9,7 +9,7 @@ ul#left-menu li a{
 }
 </style>
 <ul id="left-menu">
-<li><a href="#">Home</a></li>
-<li><a href="#">My Albums</a></li>
-<li><a href="#">Other Persons</a></li>
+<li><a href="?param=index">Home</a></li>
+<li><a href="?param=myalbums">My Albums</a></li>
+<li><a href="?param=view_user">Other Persons</a></li>
 </ul>

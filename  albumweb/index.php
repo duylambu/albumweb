@@ -12,8 +12,9 @@
 </head>
 <body>	
 <div id="wrapper">
+    <div id="header"><?php include_once('frontend/header/header.php'); ?></div>
 	<div class="menu">
-    <?php include_once("skin/front-menu-nav/menu-nav.php");?>		
+    <?php include_once('skin/front-menu-nav/menu-nav.php');?>		
 	</div>
     <div id="wrapper-container" style="">
     <div id="left-container">
@@ -33,7 +34,7 @@
     </div>
     </div>
     <?php
-    //include("frontend/footer/footer.php"); 
+    include("frontend/footer/footer.php"); 
     ?>
 </div>
 </body>

@@ -1,4 +1,14 @@
 <?php
+if($_SESSION['user']==null || !isset($_SESSION['user']))
+{?>
+    <script>
+    window.location="?param=log_in";
+    </script>    
+<?php
+} 
+?>
+
+<?php
 include_once('dbconnect.php');
 ?>
 <style>

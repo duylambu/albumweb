@@ -52,6 +52,11 @@ if($_GET['param']=="album")
         include_once("album/view_album.php");
         return;
     }
+    if($_GET['param']=="view_photo")
+    {
+        include_once("album/view_photo2.php");
+        return;
+    }
     if($_GET['param']=="detail_album")
     {
         include_once("album/detail_album.php");
@@ -60,6 +65,11 @@ if($_GET['param']=="album")
     if($_GET['param']=="user_info")
     {
         include_once("user/profile.php");
+        return;
+    }
+    if($_GET['param']=="view_user")
+    {
+        include_once("frontend/user/list_users.php");
         return;
     }
     else
