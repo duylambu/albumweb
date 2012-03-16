@@ -1,30 +1,30 @@
 <script>
-$(document).ready(function(){
+$(document).ready(function(){    
     $(".search").keyup(function() 
     {
-    var searchbox = $(this).val();
-    //var dataString = {'searchword':searchbox,'aid':<?php echo $_GET['id'];?>};
-    if(searchbox=='')
-    {}
-    else
-    {
-    $.ajax({
-    type: "POST",
-    url: "frontend/search/search_get.php",
-    data: {'searchword':searchbox,'aid':<?php echo $_GET['id'];?>},
-    cache: false,
-    success: function(html)
-    {
-    $("#display").html(html).show();
-    }
-    });
-    }return false; 
-    });
+        var searchbox = $(this).val();
+        //var dataString = {'searchword':searchbox,'aid':<?php echo $_GET['id'];?>};
+        if(searchbox=='')
+        {}
+        else
+        {
+            $.ajax({
+            type: "POST",
+            url: "frontend/search/search_get.php",
+            data: {'searchword':searchbox,'aid':<?php echo $_GET['id'];?>},
+            cache: false,
+            success: function(html)
+            {
+            $("#display").html(html).show();
+            }
+            });
+        }
+        //return false; 
+    }); 
+    $("#display").focusout(function(){       
+        $(this).empty();
+    });   
     
-    $('.display_box').click(function(){
-        alert('falfl');
-        $('#searchbox').val($this.html);
-    });
 });
 </script>
 
