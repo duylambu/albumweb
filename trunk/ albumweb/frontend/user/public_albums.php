@@ -1,3 +1,5 @@
+
+
 <?php
 include_once('dbconnect.php');
 ?>
@@ -24,7 +26,7 @@ $result=mysql_query($query);
 while($row=mysql_fetch_array($result))
 {?>
 <div class="album-item">
-<div class="album-avatar"><img class="image-album" src="upload/<?php echo $id;?>/<?php echo $row['album_id'];?>/avatar/<?php echo $row['avatar'];?>" /></div>
+<div class="album-avatar"><a href="?param=detail_album&id=<?php echo $row['album_id'];?>"><img class="image-album" src="upload/<?php echo $id;?>/<?php echo $row['album_id'];?>/avatar/<?php echo $row['avatar'];?>" /></a></div>
 <div><?php echo $row['album_name'];?></div>
 </div>
 <?}

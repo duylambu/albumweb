@@ -80,7 +80,7 @@ $upload="../../upload/";
           echo "<div class='album-item'>
           <div><a><img class='avatar' src='upload/$user/$albumid/avatar/$avatar'/></a></div>
           <div><a>$albumname</a></div>
-          <div><a href='?param=edit_album&id=$albumid'>Edit</a> | <a href='?param=view_album&id=$albumid'></a></div>
+          <div><a href='?param=edit_album&id=$albumid'>Edit</a> | <a href='?param=view_album&id=$albumid'>View</a></div>
           </div>";
           }
         }

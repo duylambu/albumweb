@@ -60,5 +60,10 @@ div#right-container
     float:right;
     margin: 0px 0px 0px 0px;
     padding: 0px;
-    background:gray;
+}
+div#footer{
+    background:pink;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    min-height:50px;
 }

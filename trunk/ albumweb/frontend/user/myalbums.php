@@ -36,23 +36,6 @@ img.avatar{
      
 }
 </style>
-<div id="list-albums">
-<?php
-$id=$_SESSION['user']['id']; 
-$query="select * from album where owner=$id";
-$result=mysql_query($query);
-while($row=mysql_fetch_array($result))
-{?>
-    <div class="album-item">
-    <div><a><img class="avatar" src="upload/<?php echo $id;?>/<?php echo $row['album_id'];?>/avatar/<?php echo $row['avatar'];?>" /></a></div>
-    <div><a><?php echo $row['album_name'];?></a></div>
-    <div><a href="?param=edit_album&id=<?php echo $row['album_id'];?>">Edit</a> | <a href="?param=detail_album&id=<?php echo $row['album_id'];?>">View</a></div>
-    </div>
-<?php 
-}
-?>
-</div>
-
 <div>Creat New Album</div>
 <script type="text/javascript">
     $(document).ready(function() 
@@ -110,6 +93,8 @@ while($row=mysql_fetch_array($result))
     
  <?php
 session_start();
+
+$id=$_SESSION['user']['id'];
 ?>
 <div id='preview'>
 </div>
@@ -125,3 +110,21 @@ session_start();
 <tr><td><input type="button" name="createalbum" id="createalbum" value="Create"/></td></tr>
 </table>
 </form>
+
+<div id="list-albums">
+<?php
+$query="select * from album where owner=$id";
+$result=mysql_query($query);
+while($row=mysql_fetch_array($result))
+{?>
+    <div class="album-item">
+    <div><a><img class="avatar" src="upload/<?php echo $id;?>/<?php echo $row['album_id'];?>/avatar/<?php echo $row['avatar'];?>" /></a></div>
+    <div><a><?php echo $row['album_name'];?></a></div>
+    <div><a href="?param=edit_album&id=<?php echo $row['album_id'];?>">Edit</a> | <a href="?param=detail_album&id=<?php echo $row['album_id'];?>">View</a></div>
+    </div>
+<?php 
+}
+?>
+</div>
+
+

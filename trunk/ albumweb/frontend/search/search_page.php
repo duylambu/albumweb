@@ -1,14 +1,6 @@
 <?php
-include_once('../../dbconnect.php');
+include_once('dbconnect.php');
 ?>
-<script>
-$(document).ready(function(){
-   $('.display_box').click(function(){
-        //alert('falfl');
-        $('#searchbox').val($(this).children('a').html());
-    });            
-});
-</script>
 <?php
 if($_POST)
 {
@@ -20,18 +12,6 @@ from photo as p left join album as a on p.album_id=a.album_id
 where p.album_id=$aid and (p.photo_name like '%$q%' or p.photo_name like '%$q%') order by p.photo_name LIMIT 5");
 while($row=mysql_fetch_array($sql_res))
 {
-    
-    /*
-$fname=$row['fname'];
-$lname=$row['lname'];
-$img=$row['img'];
-$country=$row['country'];
-$re_fname='<b>'.$q.'</b>';
-$re_lname='<b>'.$q.'</b>';
-$final_fname = str_ireplace($q, $re_fname, $fname);
-$final_lname = str_ireplace($q, $re_lname, $lname);
-*/
-
 ?>
 <div class="display_box" align="left">
 <img style="width: 25px;height:25px;" src="upload/
