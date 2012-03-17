@@ -6,10 +6,12 @@ include_once('dbconnect.php');
 <style>
 div#list-public-album{
     float:left;
+    font-size:11px;
+    text-align: left;
 }
 div.album-item{
     width:130px;
-    height:150px;
+    height:180px;
     float:left;
 }
 img.image-album{
@@ -28,6 +30,7 @@ while($row=mysql_fetch_array($result))
 <div class="album-item">
 <div class="album-avatar"><a href="?param=detail_album&id=<?php echo $row['album_id'];?>"><img class="image-album" src="upload/<?php echo $id;?>/<?php echo $row['album_id'];?>/avatar/<?php echo $row['avatar'];?>" /></a></div>
 <div><?php echo $row['album_name'];?></div>
+<div>Created:<?php echo $row['date_created'];?></div>
 </div>
 <?}
  ?>
