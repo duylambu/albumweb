@@ -117,6 +117,9 @@ $(document).ready(function(){
 
 
 <style>
+div#detail-album{
+    margin-top:20px;
+}
 div#photo-item
 {
     width:120px;
@@ -128,7 +131,7 @@ img#image{
     height:100px;
 }
 </style>
-<h2>VIEW ALBUM</h2>
+<h2>PHOTOs of ALBUM</h2>
 <div id="detail-album">
 <?php
 $uid=$_GET['uid'];

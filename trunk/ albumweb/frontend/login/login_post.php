@@ -8,6 +8,8 @@ $username=$_POST['username'];
 $password=$_POST['password'];
 $remem=$_POST['remember_me'];
 
+$username=stripslashes($username);
+$password=stripslashes($password);
 
 if($username!=null && $username!="" && $password!=null && $password!="")
 {

@@ -4,8 +4,11 @@
 <?php
 $upload="../../upload/";
 $user=$_POST['username'];
-$email=$_POST['email']; 
+$user=stripslashes($user);
+$email=$_POST['email'];
+$email=stripslashes($email); 
 $password=$_POST['password'];
+$password=stripslashes($password);
 $fullname=$_POST['fullname'];
 //$address=$_POST['address'];
 $avatar=$_FILES["file"]["name"];
